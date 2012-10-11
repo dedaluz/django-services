@@ -45,8 +45,13 @@ class Service(models.Model):
     description = models.TextField(_('description'))
     price_notes = models.TextField(_('price notes'), blank=True)
     
+    # images
     icon  = ImageField(_('icon'), upload_to='services/icons', blank=True)
     banner  = ImageField(_('banner'), upload_to='services/banners', blank=True)
+    illustration  = ImageField(_('illustration'), upload_to='services/illustrations', blank=True)
+    
+    
+    
     status  = models.IntegerField(_('status'), choices=STATUS_CHOICES, default=2)
     
     # position field
