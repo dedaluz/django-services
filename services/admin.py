@@ -5,7 +5,7 @@ from sorl.thumbnail import get_thumbnail
 
 class ServiceInlineAdmin(AdminImageMixin, admin.TabularInline):
     model = Service
-    fields = ('title', 'position', 'image', 'status', )
+    fields = ('title', 'position', 'icon', 'status', )
     # define the sortable
     sortable_field_name = "position"
     extra = 0
@@ -20,7 +20,7 @@ class ServiceAdmin(AdminImageMixin, admin.ModelAdmin):
     """docstring for FeaturedSlide"""
 
     def thumbnail(self, obj):
-           im = get_thumbnail(obj.image, '60x60', format='PNG', quality=99)
+           im = get_thumbnail(obj.icon, '60x60', format='PNG', quality=99)
            return u"<img src='%s'>" % im.url
     thumbnail.allow_tags = True
     
