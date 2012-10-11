@@ -37,7 +37,7 @@ class Service(models.Model):
         (3, _('Featured')),
     )
     service_group = models.ForeignKey( ServiceGroup, related_name="services")
-    slider = models.ForeignKey(Slider, blank=True)
+    slider = models.ForeignKey(Slider, blank=True, null=True)
     title = models.CharField(_('title'), max_length=150)
     slug = models.SlugField(unique=True)
     caption = models.TextField(_('caption'), blank=True)
