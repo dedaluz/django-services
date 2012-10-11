@@ -40,7 +40,7 @@ class Service(models.Model):
     slider = models.ForeignKey(Slider, blank=True)
     title = models.CharField(_('title'), max_length=150)
     slug = models.SlugField(unique=True)
-    caption = models.CharField(_('caption'), blank=True, max_length=255)
+    caption = models.TextField(_('caption'), blank=True)
     excerpt = models.TextField(_('excerpt'), blank=True)
     description = models.TextField(_('description'))
     price_notes = models.TextField(_('price notes'), blank=True)
