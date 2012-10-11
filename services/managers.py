@@ -21,5 +21,5 @@ class PublicManager(models.Manager):
         return self.get_query_set().live(*args, **kwargs)
         
     def featured(self, *args, **kwargs):
-    return self.get_query_set().featured(*args, **kwargs)
+        return self.get_query_set().featured(*args, **kwargs)
     
