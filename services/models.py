@@ -46,9 +46,9 @@ class Service(models.Model):
     price_notes = models.TextField(_('price notes'), blank=True)
     
     # images
-    icon  = ImageField(_('icon'), upload_to='services/icons', blank=True)
-    banner  = ImageField(_('banner'), upload_to='services/banners', blank=True)
-    illustration  = ImageField(_('illustration'), upload_to='services/illustrations', blank=True)
+    icon  = ImageField(_('icon'), upload_to='services/icons', blank=True, null=True)
+    banner  = ImageField(_('banner'), upload_to='services/banners', blank=True, null=True)
+    illustration  = ImageField(_('illustration'), upload_to='services/illustrations', blank=True, null=True)
     
     
     
