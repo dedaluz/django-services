@@ -15,9 +15,24 @@ class ServiceGroupAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)} 
     
     inlines = [ServiceInlineAdmin]
+    
+class PackageInlineAdmin(AdminImageMixin, admin.TabularInline):
+    model = Package
+    fields = ('title', 'price', 'price_time', 'features', 'status', )
+    # define the sortable
+    sortable_field_name = "position"
+    extra = 0
+
+class PackageAdmin(AdminImageMixin, admin.ModelAdmin):
+    """docstring for Package"""
+    
+    prepopulated_fields = {"slug": ("title",)}   
+    list_display = ('title', 'price', 'price_time', 'status',)
+    
+    inlines = [PackageInlineAdmin]
 
 class ServiceAdmin(AdminImageMixin, admin.ModelAdmin):
-    """docstring for FeaturedSlide"""
+    """docstring for Service"""
 
     def thumbnail(self, obj):
            im = get_thumbnail(obj.icon, '60x60', format='PNG', quality=99)
@@ -25,9 +40,11 @@ class ServiceAdmin(AdminImageMixin, admin.ModelAdmin):
     thumbnail.allow_tags = True
     
     prepopulated_fields = {"slug": ("title",)}   
-    list_display = ('title', 'position', 'status', 'thumbnail',)
-    pass
+    list_display = ('title', 'position', 'status',)
+    
+    inlines = [PackageInlineAdmin]
         
 
 admin.site.register(ServiceGroup, ServiceGroupAdmin)
 admin.site.register(Service, ServiceAdmin)
+admin.site.register(Package, PackageAdmin)

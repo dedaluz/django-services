@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class ServiceQuerySet(models.query.QuerySet):
     def live(self):
         return self.filter(status__gte=2)

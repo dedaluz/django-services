@@ -71,3 +71,45 @@ class Service(models.Model):
     @permalink
     def get_absolute_url(self):
         return ('service_detail', None, { 'slug':self.slug })
+
+class Package(models.Model):
+    """
+    (Featured description)
+    """
+    STATUS_CHOICES = (
+        (0, _('Private')),
+        (1, _('Draft')),
+        (2, _('Public')),
+        (3, _('Featured')),
+    )
+    service_group = models.ForeignKey( Service, related_name="service_packages")
+    title = models.CharField(_('title'), max_length=150)
+    slug = models.SlugField(unique=True)
+    caption = models.TextField(_('caption'), blank=True)
+    excerpt = models.TextField(_('excerpt'), blank=True)
+    description = models.TextField(_('description'))
+    price = models.DecimalField(_('price'), max_digits=6, decimal_places=2)
+    price_time = models.CharField(blank=True, max_length=150)
+    features = models.TextField(_('price notes'), blank=True)
+    price_notes = models.TextField(_('price notes'), blank=True)
+    
+    # images
+    icon  = ImageField(_('icon'), upload_to='services/icons', blank=True, null=True)
+    banner  = ImageField(_('banner'), upload_to='services/banners', blank=True, null=True)
+    illustration  = ImageField(_('illustration'), upload_to='services/illustrations', blank=True, null=True)
+    
+    status  = models.IntegerField(_('status'), choices=STATUS_CHOICES, default=2)
+    
+    # position field
+    position = models.PositiveSmallIntegerField("Position", default=0)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    objects = PublicManager()
+    
+    class Meta:
+        verbose_name = u'Package'
+        verbose_name_plural = u'Packages'
+        ordering = ('price',)
+    
+    def __unicode__(self):
+        return self.title
