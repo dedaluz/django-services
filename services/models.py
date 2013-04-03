@@ -82,14 +82,14 @@ class Package(models.Model):
         (2, _('Public')),
         (3, _('Featured')),
     )
-    service_group = models.ForeignKey( Service, related_name="service_packages")
+    service = models.ForeignKey( Service, related_name="service_packages")
     title = models.CharField(_('title'), max_length=150)
     caption = models.TextField(_('caption'), blank=True)
     excerpt = models.TextField(_('excerpt'), blank=True)
     description = models.TextField(_('description'))
     price = models.DecimalField(_('price'), max_digits=6, decimal_places=2)
-    price_time = models.CharField(blank=True, max_length=150)
-    features = models.TextField(_('price notes'), blank=True)
+    price_time = models.CharField(_('price time'), blank=True, max_length=150)
+    features = models.TextField(_('features'), blank=True)
     price_notes = models.TextField(_('price notes'), blank=True)
     
     # images

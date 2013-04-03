@@ -25,7 +25,7 @@ class PackageInlineAdmin(AdminImageMixin, admin.TabularInline):
 class PackageAdmin(AdminImageMixin, admin.ModelAdmin):
     """docstring for Package"""
     
-    list_display = ('title', 'price', 'price_time', 'status',)
+    list_display = ('service', 'title', 'price', 'price_time', 'status',)
     
 class ServiceAdmin(AdminImageMixin, admin.ModelAdmin):
     """docstring for Service"""
