@@ -20,7 +20,6 @@ class PackageInlineAdmin(AdminImageMixin, admin.TabularInline):
     model = Package
     fields = ('title', 'price', 'price_time', 'features', 'status', )
     # define the sortable
-    sortable_field_name = "position"
     extra = 0
 
 class PackageAdmin(AdminImageMixin, admin.ModelAdmin):
