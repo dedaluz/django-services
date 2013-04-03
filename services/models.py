@@ -84,7 +84,6 @@ class Package(models.Model):
     )
     service_group = models.ForeignKey( Service, related_name="service_packages")
     title = models.CharField(_('title'), max_length=150)
-    slug = models.SlugField(unique=True)
     caption = models.TextField(_('caption'), blank=True)
     excerpt = models.TextField(_('excerpt'), blank=True)
     description = models.TextField(_('description'))

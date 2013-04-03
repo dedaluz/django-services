@@ -25,7 +25,6 @@ class PackageInlineAdmin(AdminImageMixin, admin.TabularInline):
 class PackageAdmin(AdminImageMixin, admin.ModelAdmin):
     """docstring for Package"""
     
-    prepopulated_fields = {"slug": ("title",)}   
     list_display = ('title', 'price', 'price_time', 'status',)
     
 class ServiceAdmin(AdminImageMixin, admin.ModelAdmin):
