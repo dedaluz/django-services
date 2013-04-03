@@ -1,5 +1,5 @@
 from django.contrib import admin
-from services.models import Service, ServiceGroup
+from services.models import Package, Service, ServiceGroup
 from sorl.thumbnail.admin import AdminImageMixin
 from sorl.thumbnail import get_thumbnail
 
